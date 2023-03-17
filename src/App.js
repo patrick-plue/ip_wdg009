@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
-
+import IP from './components/IP';
+import MapLeaflet from './components/MapLeaflet';
+import Country from './components/Country';
+import Time from './components/Time';
+import { useState } from 'react';
 function App() {
+  const [ipData, setIpData] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>IP PROJECT</h1>
+      <IP ipData={ipData} setIpData={setIpData} />
+      <MapLeaflet />
+      <Time />
+      {ipData && <Country code={ipData.location.country} />}
     </div>
   );
 }
